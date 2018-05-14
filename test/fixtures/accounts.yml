@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  admin_user: MyString
+  user: MyString
+  password: MyString
+  isvalid: false
+
+two:
+  admin_user: MyString
+  user: MyString
+  password: MyString
+  isvalid: false

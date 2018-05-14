@@ -1,0 +1,38 @@
+<div class="page-header" id="banner">
+  <div class="row">
+    <div class="col-lg-10 col-md-8">
+      <h2>ユーザ一更新</h2>
+      <%= form_for(@account, {url: accounts_update_path, method: 'post'}) do |f| %>
+        <p>更新したいアカウントIDを記入</p>
+        <div class="form-group">
+          <%= f.label :user, "アカウントID" %>
+          <%= f.text_field :user, class: 'form-control' %>
+        </div>
+        <%= f.label :isvalid, "アカウントの有効性" %>
+        <fieldset class="form-group">
+        <div class="form-check">
+          <label class="form-check-label">
+            <%= f.radio_button 'isvalid', 'true', {class: 'form-check-input'}  %>
+            有効
+          </label>
+        </div>
+        <div class="form-check">
+          <label class="form-check-label">
+            <%= f.radio_button 'isvalid', 'false', {class: 'form-check-input'}  %>
+            無効
+          </label>
+        </div>
+        </fieldset>
+        <%= f.hidden_field :admin_user, value: @master %>
+        <div class="form-inline">
+        <div class="actions">
+          <%= f.submit "更新する", {id: "setup_btn", onClick: 'alert("更新しました")'} %>
+          &nbsp;&nbsp;&nbsp;
+          <%= f.submit "削除する", {id: "delete_btn", onClick: 'alert("削除しました")'} %>
+        </div>
+        </div>
+      <% end %>
+
+    </div>
+  </div>
+</div>
