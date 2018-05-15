@@ -1,7 +1,7 @@
 class AccountsController < ApplicationController
 
-  before_action :authenticate_user!, :except => :check, :regist
-  protect_from_forgery :except => :check, :regist
+  before_action :authenticate_user!, :except => [:check, :regist]
+  protect_from_forgery :except => [:check, :regist]
 
   rescue_from CanCan::AccessDenied do |exception|
     redirect_to root_url, :alert => exception.message
