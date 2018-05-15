@@ -33,7 +33,8 @@ class AccountsController < ApplicationController
       user = params[:user]
       password = params[:password]
       admin = params[:admin_user]
-      user = Account.find_or_initialize_by(user: user, password: password, admin_user: admin)
+      valid = params[:isvalid]
+      user = Account.find_or_initialize_by(user: user, password: password, admin_user: admin, isvalid: valid)
       if user.new_record? # 新規作成の場合は保存
         user.save!
       end
