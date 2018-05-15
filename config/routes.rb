@@ -6,6 +6,8 @@ Rails.application.routes.draw do
 
   post 'accounts/check'
 
+  post 'accounts/regist'
+
   get 'accounts/create'
   post 'accounts/create'
 

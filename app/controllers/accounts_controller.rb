@@ -1,7 +1,7 @@
 class AccountsController < ApplicationController
 
-  before_action :authenticate_user!, :except => :check
-  protect_from_forgery :except => :check
+  before_action :authenticate_user!, :except => :check, :regist
+  protect_from_forgery :except => :check, :regist
 
   rescue_from CanCan::AccessDenied do |exception|
     redirect_to root_url, :alert => exception.message
@@ -24,6 +24,18 @@ class AccountsController < ApplicationController
         end
       else
         head 304   # 200を返す
+      end
+    end
+  end
+
+  def regist
+    if request.post? then
+      user = params[:user]
+      password = params[:password]
+      admin = params[:admin_user]
+      user = Account.find_or_initialize_by(user: user, password: password, admin_user: admin_user)
+      if user.new_record? # 新規作成の場合は保存
+        user.save!
       end
     end
   end
